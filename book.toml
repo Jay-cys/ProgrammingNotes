@@ -1,0 +1,5 @@
+[book]
+authors = ["Barret Ren"]
+language = "zh-CN"
+multilingual = false
+src = "src"
