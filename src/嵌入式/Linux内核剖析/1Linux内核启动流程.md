@@ -110,7 +110,7 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
 	pagecache_init();
 	signals_init();//初始化信号
 	seq_file_init();
-	proc_root_init();//注册并挂在proc文件系统
+	proc_root_init();//注册并挂载proc文件系统
 	nsfs_init();
     //初始化cpuset,cpuset是将cpu和内存资源以逻辑性和层次性集成的一种机制
 	cpuset_init();
