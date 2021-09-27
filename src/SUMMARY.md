@@ -177,6 +177,7 @@
     - [Linux内核模块编程]()
         - [内核模块](./Linux环境编程/内核模块/1内核模块.md)
         - [proc文件](./Linux环境编程/内核模块/2proc目录.md)
+        - [sys目录](./Linux环境编程/内核模块/3sys目录.md)
     - [Linux内核原理]()
         - [Linux进程](./Linux环境编程/Linux内核原理/1Linux进程.md)
         - [进程调度](./Linux环境编程/Linux内核原理/2进程调度.md)
