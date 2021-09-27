@@ -49,7 +49,7 @@ int main(int argc ,char **argv)
 }
 ```
 
-# 使用模块创建/proc文件
+# 创建和访问/proc文件
 像普通字符设备驱动程序一样, 我们也可以使用内核模块创建一个`/proc`下的文件, 并添加相应的驱动程序(很像笔记里虚拟字符设备). **不同的是, proc文件系统有自己独有的文件操作指针fops和创建函数。**
 ## struct proc_dir_entry
 `proc_dir_entry`用于表示一个proc文件:
@@ -218,4 +218,87 @@ module_init(profdev2_init);
 module_exit(procdev2_exit);
 
 MODULE_LICENSE("GPL");
+```
+
+# seq_file简化proc写入
+seq_file可以简化/proc文件的读写, 使读写的格式更加优雅. seq_file主要有三个函数组成:
+```c
+struct seq_operations {
+    void * (*start) (struct seq_file *m, loff_t *pos);
+    void (*stop) (struct seq_file *m, void *v);
+    void * (*next) (struct seq_file *m, void *v, loff_t *pos);
+    int (*show) (struct seq_file *m, void *v);
+};
+```
+* `start()`: 用于启动一个处理序列
+* `next()`: 每当遇到非NULL值, 就调用`next()`迭代处理。
+* `show()`: 显示每一步的输出
+* `stop()`: 当遇到NULL值时,停止调用`next()`, 调用`stop()`结束序列
+![seq_file流程](.assets/2021-09-27-10-56-58.png)
+
+使用示例如下: 需要先绑定`seq_ops`, 再将seq_file的相关函数绑定到文件ops上
+```c
+/* This function is called at the beginning of a sequence.
+ * ie, when:
+ * - the /proc file is read (first time)
+ * - after the function stop (end of sequence)
+*/
+static void *my_seq_start(struct seq_file *s, loff_t *pos)
+{
+    static unsigned long counter = 0;
+    /* beginning a new sequence? */
+    if (*pos == 0) {
+        /* yes => return a non null value to begin the sequence */
+        return &counter;
+    }
+    /* no => it is the end of the sequence, return end to stop reading */
+    *pos = 0;
+    return NULL;
+}
+
+/* This function is called after the beginning of a sequence.
+ * It is called untill the return is NULL (this ends the sequence).
+*/
+static void *my_seq_next(struct seq_file *s, void *v, loff_t *pos)
+{
+    unsigned long *tmp_v = (unsigned long *)v;
+    (*tmp_v)++;
+    (*pos)++;
+    return NULL;
+}
+
+/* This function is called for each "step" of a sequence. */
+static int my_seq_show(struct seq_file *s, void *v)
+{
+    loff_t *spos = (loff_t *)v;
+    seq_printf(s, "%Ld\n", *spos);
+    return 0;
+}
+
+/* This function is called at the end of a sequence. */
+static void my_seq_stop(struct seq_file *s, void *v)
+{
+    /* nothing to do, we use a static value in start() */
+}
+//填充seq_ops
+static struct seq_operations my_seq_ops = {
+    start:my_seq_start,
+    next:my_seq_next,
+    stop:my_seq_stop,
+    show:my_seq_show,
+};
+
+/* This function is called when the /proc file is open. */
+static int my_open(struct inode *inode, struct file *file)
+{
+    return seq_open(file, &my_seq_ops);//绑定seq_ops供其他seq函数使用
+}
+
+//定义ops结构体
+static const struct proc_ops proc_file_ops = {
+    .proc_open = my_open,
+    .proc_read = seq_read,
+    .proc_lseek = seq_lseek,
+    .proc_release = seq_release,
+};
 ```
