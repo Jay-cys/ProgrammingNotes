@@ -14,7 +14,7 @@ $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 安装完成后，运行`rustc --version`即可看到版本信息​
 
 ## 1.2 windows with Mingw安装
-如果咋windows已经安装了visual studio和MSVC编译器，则可以按照下面的默认配置进行安装：
+如果在windows已经安装了MSVC编译器，则可以按照下面的默认配置进行安装：
 
 ![image.png](.assets/1591890782860-8c90270d-f208-4918-ab8f-8a6ac150dd5a.png)
 
@@ -174,6 +174,3 @@ Rust 标准库中有很多叫做 Result 的类型：一个通用的`Result`以�
 
 - Ok 成员表示操作成功， 内部**包含成功时产生的值**。
 - Err成员则意味着操作失败， 并且包含失败的前因后果
-
-
-

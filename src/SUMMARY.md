@@ -321,6 +321,7 @@
         - [RustHello](./前沿编程技术/Rust/1RustHello.md)
         - [基础语法](./前沿编程技术/Rust/2基础语法.md)
         - [内存所有权](./前沿编程技术/Rust/3内存所有权.md)
+        - [错误处理](./前沿编程技术/Rust/7生命周期参数.md)
         - [Enum与match语句](./前沿编程技术/Rust/4Enum与match语句.md)
         - [moduleSystem](./前沿编程技术/Rust/5moduleSystem.md)
         - [错误处理](./前沿编程技术/Rust/6错误处理.md)
