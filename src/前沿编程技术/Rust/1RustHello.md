@@ -7,18 +7,9 @@
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 ```
-设置之后，windows直接双击exe安装即可，linux使用如下脚本自动安装：
-```shell
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
 安装完成后，运行`rustc --version`即可看到版本信息​
 
-## 1.2 windows with Mingw安装
-如果在windows已经安装了MSVC编译器，则可以按照下面的默认配置进行安装：
-
-![image.png](.assets/1591890782860-8c90270d-f208-4918-ab8f-8a6ac150dd5a.png)
-
-## 1.3 更新和卸载
+## 1.2 更新和卸载
 通过 rustup 安装了 Rust 之后， 很容易更新到最新版本。 在 shell 中运行如下更新脚本：
 ```shell
 $ rustup update
@@ -28,49 +19,20 @@ $ rustup update
 $ rustup self uninstall
 ```
 
-# 2 hello world
-代码示例如下：
-```rust
-fn main() {
-    println!("hello world"); //!表示rust宏，这里是打印一行内容的宏，函数不带！
-}
-```
-> 注意，代码风格可以用**rustfmt**命令自动格式化，不需要手动或编辑器调整
-
-编译rs源代码文件使用**rustc**编译命令，类似**gcc**命令的使用。
-Rust 是一种 **预编译静态类型（ ahead-of-time compiled） 语言**， 这意味着你可以编译程序， 并将可执行文件送给其他人， 他们甚至不需要安装 Rust 就可以运行。
-
-
-# 3 cargo
+# 2 cargo
 Cargo 是 Rust 的**构建系统和包管理器**。我们使用 Cargo 来管理Rust项目， 因为它可以为你处理很多任务， 比如构建代码、 下载依赖库并编译这些库。（类似C++的cmake，java的gradle）。
 
-## 3.1 cargo创建项目
-```shell
-barret@Barret-PC:~/rustCode$ cargo new hello_world
-     Created binary (application) `hello_world` package
-barret@Barret-PC:~/rustCode$ cd hello_world/
-barret@Barret-PC:~/rustCode/hello_world$ ls -a
-.  ..  .git  .gitignore  Cargo.toml  src
-```
-可以看到 Cargo 生成了如下内容：
-
-- 一个Cargo.toml 文件，保存项目信息和依赖库（rust中叫**crates**）
--  一个 src 目录， 以及位于 src 目录中的 main.rs 文件。
-- 初始化了一个 git 仓库， 以及一个 .gitignore 文件。不想自动生成git，可以使用`cargo new --vcs none`
-
-
-
-## 3.2 编译和运行
-
+## 2.1 编译和运行
+- 使用`cargo new`创建项目
 - 可以使用 `cargo build` 或 `cargo check` 构建项目
 - 使用`cargo build --release  `进行发布构建
 - 可以使用 `cargo run` 一步构建并运行项目
 - 有别于将构建结果放在与源码相同的目录， Cargo 会将其放到 target/debug 目录
 
-
-
 示例：
 ```shell
+barret@Barret-PC:~/rustCode$ cargo new hello_world
+     Created binary (application) `hello_world` package
 barret@Barret-PC:~/rustCode/hello$ cargo build
    Compiling hello v0.1.0 (/home/barret/rustCode/hello)
     Finished dev [unoptimized + debuginfo] target(s) in 0.25s
@@ -80,7 +42,7 @@ barret@Barret-PC:~/rustCode/hello$ cargo run
 Hello, world!
 ```
 
-## 3.3 添加外部依赖库
+## 2.2 添加外部依赖库
 当Rust内置的标准库没有一些功能的时候，就需要添加外部的依赖库（Rust称为crate）。基本步骤如下：
 
 1. 修改cargo的全局配置文件`~/.cargo/config`，修改使用国内的源（速度快）
@@ -119,7 +81,7 @@ Downloaded rand v0.7.3 (registry `https://mirrors.tuna.tsinghua.edu.cn/git/crate
    Compiling rand v0.7.3
 ```
 
-# 4 一个猜数字的高级例子
+# 3 一个猜数字的例子
 ```rust
 use rand::Rng;
 use std::cmp::Ordering;
@@ -158,7 +120,6 @@ fn main() {
 }
 ```
 从上面例子可以学到
-
 - `std::io`是标准IO库，可以处理标准输入和输出
 - 调用外部依赖库`rand`，生成随机数
 - `String::new`是调用了String类的new静态方法，生成一个string对象
@@ -171,6 +132,5 @@ fn main() {
 
 
 Rust 标准库中有很多叫做 Result 的类型：一个通用的`Result`以及在子模块中的特化版本， 比如 io::Result。Result 的成员是 Ok 和 Err：
-
 - Ok 成员表示操作成功， 内部**包含成功时产生的值**。
 - Err成员则意味着操作失败， 并且包含失败的前因后果
