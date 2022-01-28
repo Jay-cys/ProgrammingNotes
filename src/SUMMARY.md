@@ -306,7 +306,7 @@
 # 前沿编程技术
 - [Cmake]()
     - [Cmake语法](./前沿编程技术/Cmake语法.md)
-    - [Cmake语法](./前沿编程技术/CMakeLists示例.md)
+    - [Cmakelists示例](./前沿编程技术/CMakeLists示例.md)
 - [Golang]()
     - [Go环境配置](./前沿编程技术/Go/Go环境配置.md)
     - [package管理](./前沿编程技术/Go/1package管理.md)
