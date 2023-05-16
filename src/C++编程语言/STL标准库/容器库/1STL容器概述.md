@@ -1,6 +1,8 @@
 
 # 内存结构
-容器各个种类和内存中的样子：![snipaste_20181122_215525.png](.assets/1577634426562-f6557d62-ef39-4593-a07f-eacd3f56b1d2.png)
+容器各个种类和内存中的样子：
+
+![snipaste_20181122_215525.png](.assets/1577634426562-f6557d62-ef39-4593-a07f-eacd3f56b1d2.png)
 
 # 容器性能
 | **类型** | **名称** | **插入数据性能** | **删除数据性能** | **查找性能** |
@@ -13,10 +15,10 @@
 | 容器适配器 | queue | 取决于包含的底层容器list/deque：O1 | 取决于包含的底层容器list/deque：O1 | 不允许 |
 |  | priority_queue | 取决于包含的底层容器vector/deque：OlogN | 取决于包含的底层容器vector/deque：OlogN | 不允许 |
 |  | stack | 取决于包含的底层容器list/edque/vector：O1 | 取决于包含的底层容器list/edque/vector：O1 | 不允许 |
-| 有序关联容器 | setmultiset | OlogN | OlogN | OlogN |
-|  | mapmultimap | OlogN | OlogN | OlogN |
-| 无序关联容器 | unordered_setunordered_multiset | 平均：O1最坏情况：On | 平均：O1最坏情况：On | 平均：O1最坏情况：On |
-|  | unordered_mapunordered_multimap | 平均：O1最坏情况：On | 平均：O1最坏情况：On | 平均：O1最坏情况：On |
+| 有序关联容器 | set/multiset | OlogN | OlogN | OlogN |
+|  | map/multimap | OlogN | OlogN | OlogN |
+| 无序关联容器 | unordered_set/unordered_multiset | 平均：O1最坏情况：On | 平均：O1最坏情况：On | 平均：O1最坏情况：On |
+|  | unordered_map/unordered_multimap | 平均：O1最坏情况：On | 平均：O1最坏情况：On | 平均：O1最坏情况：On |
 | 特殊 | bitset | 不允许 | 不允许 | O1 |
 
 
