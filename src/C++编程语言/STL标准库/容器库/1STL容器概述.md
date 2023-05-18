@@ -2,7 +2,7 @@
 # 内存结构
 容器各个种类和内存中的样子：
 
-![snipaste_20181122_215525.png](.assets/1577634426562-f6557d62-ef39-4593-a07f-eacd3f56b1d2.png)
+![image-20230518101347430](.assets/image-20230518101347430.png)
 
 # 容器性能
 | **类型** | **名称** | **插入数据性能** | **删除数据性能** | **查找性能** |
@@ -23,7 +23,9 @@
 
 
 # 容器操作函数
-容器支持的各种操作和相应函数，参照[https://zh.cppreference.com/w/cpp/container](https://zh.cppreference.com/w/cpp/container)最后一个表格。![image.png](.assets/1627028499114-755a633d-0b29-4178-a153-a97e6e763ef1.png)
+容器支持的各种操作和相应函数，参照[https://zh.cppreference.com/w/cpp/container](https://zh.cppreference.com/w/cpp/container)最后一个表格。
+
+![image.png](.assets/1627028499114-755a633d-0b29-4178-a153-a97e6e763ef1.png)
 
 # 如何选择容器类型
 ![containerchoice.20210603.png](.assets/1627027978865-00066bb3-b559-4457-88c3-034fe43ddb9a.png)
