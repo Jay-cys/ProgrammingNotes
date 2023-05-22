@@ -7,17 +7,12 @@
 
 | **迭代器类型** | **支持的操作** | **说明** |
 | --- | --- | --- |
-| input iterator输入迭代器 | operator++operator*operator->operator=operator==operator!= copy constructor | 提供只读的访问，并且只能++向后访问iterator本身可以赋值、复制和比较 |
+| input iterator输入迭代器 | operator++ operator* operator-> operator= operator== operator!= copy constructor | 提供只读的访问，并且只能++向后访问iterator本身可以赋值、复制和比较 |
 | output iterator输出迭代器 | operator++operator*operator= copy constructor | 提供可写的访问，只能++向后访问iterator可以赋值、复制，但不能比较 |
 | forward iterator向前迭代器 | 输入迭代器的运算+default constructor | 提供可写的访问，向前访问，++表示向前iterator本身可以赋值、复制和比较 |
 | bidirectional iterator双向迭代器 | 向前迭代器的运算+operator--  | 提供向前迭代器所有功能并且可以移动到前一个element(--运算符) |
-| random access iterator随机访问迭代器 | 双向迭代器的运算+operator+operatoroperator+=operator-=operator<operator>operator<=operator>=operator[]  | 相当于原始指针：支持
-指针运算，数组索引
-语法和所有形式的比较 |
-r连续迭代器(C++17) | 随机访问能力 +
-逻辑上相邻的元素
-容器必须在内存中物理含义的相邻 | 比如std::array, vector (notvector<bool>), string, string_view的迭代器  |
-
+| random access iterator随机访问迭代器 | 双向迭代器的运算+operator+operatoroperator+=operator-=operator<operator>operator<=operator>=operator[] | 相当于原始指针：支持指针运算，数组索引语法和所有形式的比较 |
+| r连续迭代器(C++17) | 随机访问能力 + 逻辑上相邻的元素容器必须在内存中物理含义的相邻 | 比如std::array, vector (notvector<bool>), string, string_view的迭代器 |
 
 # 获取容器的迭代器
 每个STL中的容器都提供了`public iterator`，可以通过如下**全局非成员函数**获取（**推荐使用全局非成员函数，不要使用容器内同名的成员函数**）：如下全局函数在头文件`<iterator>`中：![image.png](.assets/1627055065340-9832e03f-57a7-4711-8862-75ca1a26d51d.png)
