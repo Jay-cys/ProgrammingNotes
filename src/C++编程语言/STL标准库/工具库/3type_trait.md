@@ -2,7 +2,8 @@
 # 1 类型特征相关函数
 type_traits（**类型的特征）**是C++11提供的模板元基础库，是模板编程的基石。type_traits可实现在编译期计算、判断、转换、查询等等功能，提供了编译期的true和false：`std::true_type`和`std::false_type`。type trait主要分为如下几类：
 
-- **基本类型判断**：传入类型参数，返回`std::true_type`和`std::false_type`。比如：![image.png](.assets/1613837870632-f320d422-52f3-492c-b97a-cca19404ad0a.png)
+- **基本类型判断**：传入类型参数，返回`std::true_type`和`std::false_type`。比如：
+- ![image.png](.assets/1613837870632-f320d422-52f3-492c-b97a-cca19404ad0a.png)
 - **检查类型之间关系**：传入多参数。比如：
 
 ![image.png](.assets/1613837909026-3c5a29ba-9fb6-4fdc-a129-7c8bc564b3ae.png)

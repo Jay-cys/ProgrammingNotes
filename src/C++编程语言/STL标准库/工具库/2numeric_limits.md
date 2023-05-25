@@ -1,5 +1,9 @@
-`numeric_limits `类模板提供查询各种数据类型类型属性的标准化方式，支持的类型和**偏特化版本**格式如下：![image.png](.assets/1613808159381-1e369b85-8a19-4fbe-889f-11b52b4c63d5.png)
+`numeric_limits `类模板提供查询各种数据类型类型属性的标准化方式，支持的类型和**偏特化版本**格式如下：
+
+![image.png](.assets/1613808159381-1e369b85-8a19-4fbe-889f-11b52b4c63d5.png)
+
 简单示例如下：
+
 ```cpp
 //numeric_limits的使用示例
 #include <iostream>
