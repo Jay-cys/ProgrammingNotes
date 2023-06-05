@@ -50,7 +50,7 @@
 
 ## 二、后台组件编程
 
-1. 持久化 MySQL，包括：MySQL安装配置与远程连接、数据操作源于SQL语句、存储过程与事务处理、SQL函数，运算，临时表、防数据丢失 备份与恢复、MySQL建库建表建索引
+1. 持久化 MySQL，包括：MySQL安装配置与远程连接、数据操作源于SQL语句、存储过程与事务处理、SQL函数，运算，临时表、防数据丢失备份与恢复、MySQL建库建表建索引
 1. 消息队列 ZeroMQ，包括：ZMQ编译安装与开发环境搭建、publisher-subscriber模式实现、request-response模式实现、Router-Dealer模式实现、消息队列—性能分析
 1. 缓存 Redis，包括： Redis编译安装配置、客户端全局唯一ID保存机制、Redis消息队列机制 发布订阅、Redis事务实战、Redis安全性能，数据备份与恢复、Redis分布式锁详解
 1. 反向代理 Nginx，包括： Nginx开发介绍、反向代理负载均衡配置详解、自定义协议upstream开发、子域名映射、服务器后台攻击预防、nginx双虚拟主机
